@@ -1,0 +1,56 @@
+FONTY:
+font-size: 5vw - viewport width- szerokosc okna przegladarki
+font-size: 2em - 2x parent size
+font-size: 200% - 200% of parent
+font-size: 10px - 10 pixeli
+
+letter-spacing: 20px; - przerwy miedzy literami
+word-spacing: 10px; - przerwy miedzy slowami
+text-decoration: underline; - overline/line-through -dekoracja tekstu
+text-align: justify/left/right - wyrównaj
+text-align-last: right/left - wyrównanie ostatniej lini
+line-hight: 200% - wysokość lini względem fonta / obiektu
+vertical-align: 0%; - wysokość względem lini (górny/dolny index)
+text-indent: 10px; - wcięcie
+
+font-family: serif; - szeryfowe, brzydtkie, do drukowania
+font-family: sans-serif; - bezszeryfowa np Arial
+font-family: 'robot condensed', sans-serif; przeglądarka wyszukuje po kolei aż znajdzie, ciapki opcjonalne
+
+text-shadow: 0 0 5px red; xAxis, yAxis,(przesunięcie cienia) rozmycie, color
+
+font-weight: 100-900,bold,lighter; - fonty systemowe maja tylko normal i bold.
+font-style: italic;
+
+text-transform: uppercase; - zmienia cały text
+color: #ff0000; 255,0,0 - ff = 15 x16 +15
+color: rgba(0,0,0, .5) - .5 = apha = mieszanie kolorów tła
+-webkit-hyphens: auto; - dzieli wyrazy(?) - wrażliwe na parametr lang
+word-wrap: break-word; - łam słowo jak się niemieści
+
+importFontów:
+Google fonts -> select fonts -> customize fonts -> implement link in html head
+or @import in styles
+
+JEDNOSTKI:
+font-size: 5vw - viewport width- szerokosc okna przegladarki
+font-size: 2em - 2x parent size
+font-size: 200% - 200% of parent
+font-size: 10px - 10 pixeli
+
+font-size: 2em; = 2x medium = 32px;
+padding-left: 2em; -> patrzy na fontsize!! = 64px!!
+
+padding-left: 200% -> pułapka -> dziedziczy po body!!(szerokość)
+
+font-size 2rem; -> rem odnosi się do klasy html, albo pseudoklasy :root{}
+
+cant use % for borders
+
+vw - szerokość view portu zawiera suwak, % body nie bierze go pod uwagę
+dlatego lepiej używać vh do wysokości
+currentColor przechowuje domyślny kolor - zazwyczaj czarny, chyba, że zmienimy
+
+width: 50vmax / min - bierz w albo h w zależności od tego czy w > h
+
+float: left; - opływaj z lewej;
