@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 0;
+            width: 10vh;
+            height: 10vh;
+            background-color: black;
+            animation: slide infinite alternate 2s steps(3);
+        }
+
+        button:hover+div {
+            animation-play-state: paused;
+        }
+
+        @keyframes slide {
+            100% {
+                left: 90vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button>start / stop</button>
+    <div></div>
+</body>
+
+</html>

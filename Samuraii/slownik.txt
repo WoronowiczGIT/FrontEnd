@@ -230,7 +230,25 @@ jQuery CDN -> minified -> paste to body
   .click(function(){}) ->execute function
   .toggleClass("className") -> add or remove class when called
 
-
+  --
+  ANIMATION 
+  animation:
+    5s -> time
+    5s -> next value is delay
+        animation-count:
+            1 - infinite -> count loops
+            can use fractions (stops at given %)
+        animation-direction:
+            alternate -> play animation it backwards every second time
+            inne -> reverse , alternate-reverse, normal
+        animation-fill-mode:
+            none ->
+            both -> use animation  0% point as start, and ending point as 100%, after animation finish.
+            forwars -> do not go back to starting point after animation
+            backwards -> starts at 0% but then get back to default place after animation
+        animation-play-state:
+            running -> d'Oh.
+            paused -> d'Oh.
 
 
 
