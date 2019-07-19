@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            position: relative;
+            padding: 10px 25px;
+            font-size: 40px;
+            margin: 100px;
+            border-style: none;
+            background-color: #dddddd;
+            overflow: hidden;
+
+        }
+
+        span {
+            position: absolute;
+            height: 3px;
+            width: 50%;
+            background-color: #000000;
+            bottom: 0px;
+            left: -50%;
+            transition: 1s;
+        }
+
+        /* button:hover span {
+            left: 25%;
+        } */
+        /* w taki sposob befor i after mozna uzywac zamiennie */
+        button::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 6px;
+            background-color: #000000;
+            transition: 3s cubic-bezier(0.04, 0.68, 1, 2.07);
+        }
+
+        button:hover::after {
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Przycisk<span></span></button>
+</body>
+
+</html>

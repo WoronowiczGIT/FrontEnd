@@ -1,0 +1,42 @@
+span {
+    position: relative;
+    display: inline-block;
+    height: 50%;
+    width: 50%;
+
+}
+
+.board {
+
+    position: relative;
+    font-size: 0px;
+    height: calc(30vh + 10px);
+    width: calc(30vh + 10px);
+    border: 10px black solid;
+    top: calc(50vh - (30vh/2) - 10px);
+    left: calc(50vw - (30vh/2) - 10px);
+}
+
+span:nth-child(1) {
+    background-color: red;
+
+}
+
+span:nth-child(2) {
+    background-color: white;
+}
+
+span:nth-child(3) {
+    background-color: white;
+}
+
+span:nth-child(4) {
+    background-color: red;
+
+}
+
+h1 {
+    position: absolute;
+    bottom: 10vh;
+    position: center;
+}

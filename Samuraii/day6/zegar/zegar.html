@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .clock {
+            position: absolute;
+            width: 40vh;
+            height: 40vh;
+            border-radius: 50%;
+            background-color: red;
+
+            top: 25%;
+            left: 25%;
+        }
+
+        .hand {
+            position: absolute;
+            top: 5%;
+            left: calc(50% - .5 * var(--clockW));
+            --clockW: 10px;
+            width: var(--clockW);
+            height: 45%;
+            background: #000;
+            border-radius: 80% 80% 30% 30%;
+
+            transition: 60s steps(60);
+            transform-origin: 50% 100%;
+        }
+
+        .clock:hover .hand {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hand">
+
+        </div>
+    </div>
+</body>
+
+</html>

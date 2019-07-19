@@ -54,3 +54,174 @@ currentColor przechowuje domyślny kolor - zazwyczaj czarny, chyba, że zmienimy
 width: 50vmax / min - bierz w albo h w zależności od tego czy w > h
 
 float: left; - opływaj z lewej;
+
+--
+Elementy - domyślnie transparentne
+kanał Alpha określa transparentność wartości od 0 - 1, gdzie 1 = 100%
+opacity: 0-1; - przezroczystość
+
+background-color: rgba(255,0,0,1);
+background-image: url(path/img.jpg); / repeats as default
+
+background-image: url(img1.jpg), url(img2.jpg) - stackuje oba tła na sobie
+background-repeat: no-repeat, repeat-x; -> pierwszy niedublowany, drugi dublowany wedle osi X
+background-position: x,y;
+background-position: right 20% bottom 50%;
+background-position: top; -> druga domyślnie zawsze jest center
+background-position-x: 0px; -> oczywiste
+
+background-size: auto auto; -> default
+background-size: 300px auto -> auto = zachowaj skalę
+background-size: 100% 100%; -> rozciąga do wielkości rodzica
+
+background-size: cover; ->wypełnij tło + nie rozciągaj i nie skracaj + staraj się nie ciąć zdjęcia
+background-size: contain; -> cała grafika musi się znaleźć w środku
+
+background-attachment: scrool/fixed -> tło przewija się razem z oknem przeglądarki albo zostaje w miejscu
+background-origin: 
+    border-box; -> zachodzi na na ramkę
+    padding-box; -> zachodzi na padding
+    content-box; -> pokrywa tylko content
+
+background-clip:
+    border-box; zachodzi pod ramke
+    padding-box; zachodzi pod padding
+    content-box; tylko content -> obetnie zdjęcie (jeśli ma origin - padding-box)
+
+background-image: 
+    linear-gradient:(white 50%, red 100%) -> gradient is an image =  przykrywa kolor
+--
+BOX SIZING BOX MODEL
+
+div{
+    width: , hight: -> rozmiar elementu
+    padding: odsuwa content do środka
+    border: powieksza rozmiar elementow o ramke
+    margin: odsuwa od siebie elementy o wartość (nie sumują się pionowo, ale poziomo już tak)
+
+    overflow: hidden; -> ukrywa wystającą część elementu (dzieci, np zadługi text)
+    element wychodzi poza box, kiedy rozmiar boxa jest mniejszy od rozmiaru elementu(np ustawiony na sztywno)
+    możemy to ominąć używająć:
+    min-height: , max-height: itd.
+}
+
+box-sizing:
+    content-box; -> domyślne, deklarowany rozmiar = content+padding
+    border-box; -> deklarowany rozmiar = content+padding+border
+    border-box -> pozwala lepiej panować nad układem elementów
+--
+POSITION
+position:
+    static -> elementy widzą się nawzajem, domyślna(top,left,z-index -> nie działają)
+
+    fixed -> wyjmujemy element ze struktury, przykrywa inne elementy
+        zawsze pozostaje w tej samej pozycji względem okna
+        powinniśmy określić pozycję względem okna przeglądarki:
+        (liczymy od górnej lewej krawędzi)
+        left: 300px 
+        top: 50% ->(!) określa miejsce w którym zaczynamy rysować element
+        względem danej krawędzi rodzica
+
+        z-index: auto; -> ustawiamy chierarchię warstw ( oś Z )
+
+    absolute -> pozycjonowany domyślnie względem okna przeglądarki, 
+                ale zostaje w tym samym miejscu przy scroolowaniu
+
+    dla fixed i absolute -> musimy zarządzać rozmiarem!
+
+    relative -> pozycja względem rodzica, (cienia w rodzicu), 
+    ale w warstwie widoku jest niezależny
+
+span - element liniowy( nie możemy ustawiać width i height), 
+    ale możemy ustawić na fixed/absolute -> wtedy musi mieć wymiary
+
+DISPLAY:
+    display: inline;
+    img,span - elementy liniowe
+    button, input - inline-block
+    width:,height: - zawsze auto = tyle ile trzeba 
+
+    section,div - elementy blokowe
+
+img{
+    vertical-align: wyrównanie względem lini
+    display: block; -> tworzy element blokowy
+}
+    display: inline-block;
+        -> zmienia elementy liniowe na blokowe, ale z zachowaniem liniowości
+float -> ustawia display na inline-block;
+
+text-align: center; -> u rodzica odnosi się do wszystkich elementów liniowych
+(pseudoklasa która działa w trakcie zaznaczenia)
+input:focus{
+    border:
+}
+
+inline-block problem -> z automatu generują się marginesy
+    obejście -> parent -> font-size: 0px;
+--
+CALC
+    umożliwia przeglądarce obliczenie wartości (operatory matematyczne nie działają w css same z siebie)
+    font-size: calc(100vh - 300px);
+
+--
+ZMIENNE
+ deklarowanie -> 
+ parent{
+    --name: value;
+ }
+ wywołanie ->
+
+    font-size: var(--value);
+
+--
+TRANSITION
+transition:
+    all -> transition-property: wskazuje które właściwości chcemy animować np tylko bgc
+    0s -> transition-duration: how long does it take (s or ms)
+    ease -> transition-timing-function:
+        ease -> slow-fast-slow
+        linear -> const pace
+        ease-in -> slow-fast
+        ease-out -> fast-slow
+        cubic-bezier(a,b,c,d) -> self defined timeline
+    0 -> transition-delay: time animation is delayed
+
+    kolejkowanie:
+    transition: color 1s ease, font-size 1s 2s linear, top 1s ease;
+
+co animaować:
+    -kolory
+    -wielkosci
+    -pozycje
+    -elementy boxowane (padding border margin)
+    transformacje: rotate scale translate
+    inne: cienie
+
+czego nie animować:
+    display
+    position
+    float
+    font switch
+
+--
+TRANSFORM 
+transform-origin: x% y%;
+ustawia punkt transformacji -> TopLeft = 0,0 botRight = 100,100
+pkt może znajdować się poza obiektem;
+scale(0,0) / scaleX() / scaleY() / dla -1 mamy odbicie lustrzane
+translate(x,y) / dla 50%,50% -> wyśrodkowuje element względem rodzica
+rotate(deg)
+skew(deg)
+
+przy nadpisywaniu translformat musimy uwzglednić wsyzstkie wartości!!!
+w przeciwnym wypadku dodana zostanie domyślna -> 0;
+
+
+
+
+
+
+
+
+

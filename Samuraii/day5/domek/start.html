@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Domek</title>
+    <style>
+        span {
+            position: absolute;
+            display: block;
+            line-height: 5vh;
+            width: 10%;
+            background-color: red;
+            color: azure;
+            font-size: 16px;
+            text-align: center;
+            top: 20%;
+            left: 20%;
+            cursor: pointer;
+        }
+
+        div {
+            position: absolute;
+            /* display: none; */
+            top: 90%;
+            left: 20%;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transition: 1s;
+        }
+
+        span:hover {
+            background-color: brown;
+        }
+
+        /* budynek */
+        span:hover~div:nth-of-type(1) {
+            display: block;
+            top: 70%;
+            left: 70%;
+            width: 400px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* dach */
+        span:hover~div:nth-of-type(2) {
+            display: block;
+            top: calc(70% - 100px);
+            left: 70%;
+
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, -50%) rotate(45deg) scale(3);
+
+            background-color: yellow;
+
+        }
+
+        /* komin */
+        span:hover~div:nth-of-type(3) {
+            display: block;
+            top: calc(70% - 200px);
+            left: calc(70% + 100px);
+
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 100px;
+            background-color: black;
+        }
+
+        /* oknoL */
+        span:hover~div:nth-of-type(4) {
+            display: block;
+            top: calc(70%);
+            left: calc(70% - 100px);
+
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            transition: 1s 0.2s;
+        }
+
+        /* oknoP */
+        span:hover~div:nth-of-type(5) {
+            display: block;
+            top: calc(70%);
+            left: calc(70% + 100px);
+
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+        }
+
+        /* drzwi */
+        span:hover~div:nth-of-type(6) {
+
+            display: block;
+            top: calc(70% + 100px);
+            left: calc(70%);
+
+            transform: translate(-50%, -100%);
+            width: 50px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body>
+    <span>BUDUJEMY</span>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 2 - przemieszczenie kwadratu</title>
+    <style>
+        body {
+            margin: 0;
+            /* text-align: center; */
+        }
+
+        button {
+            position: absolute;
+
+            width: 120px;
+            padding: 20px;
+            left: calc(50% - 60px);
+            top: 50px;
+
+            border: 2px solid black;
+            background-color: #fff;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #000000;
+            color: white;
+        }
+
+        .square {
+            /* jeśli nie zadeklarujemy warunków poczatkowych to transition zawsze bedzie 0s */
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #000000;
+            transition: left 0.5s, top 0.5s 1s,
+                width 1.5s, height 1.5s;
+        }
+
+        button:hover+.square {
+            /* musimy animować już posiadane wlasciwosci top-> top, left->left*/
+            width: 200px;
+            height: 200px;
+            top: calc(100% - 200px);
+            left: calc(100% - 200px);
+        }
+    </style>
+</head>
+
+<body>
+    <button>Lecimy!</button>
+    <div class="square"></div>
+</body>
+
+</html>
