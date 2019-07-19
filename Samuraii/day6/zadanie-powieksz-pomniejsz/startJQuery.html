@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1 {
+            display: block;
+            position: absolute;
+            font-family: arial;
+            font-size: 50px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ddd;
+            transition: 1.5s;
+        }
+
+        h1.duzy {
+            font-size: 100px;
+        }
+
+        h1.maly {
+            font-size: 25px;
+        }
+
+        h1.ramka {
+            border: 50px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button class="larger">2xWiększy</button>
+    <button class="smaller">2xMniejszy</button>
+    <button class="border">Obramowanie</button>
+    <h1>Nazwa</h1>
+
+    <!-- potrzbujemy tylko tego -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        // wyszukaj - > oznaczenia takie jak w css nth:child etc...
+        $(".larger").click(function () {
+            $("h1").toggleClass("duzy");
+        })
+        $(".smaller").click(function () {
+            $("h1").toggleClass("maly");
+        })
+        $(".border").click(function () {
+            $("h1").toggleClass("ramka");
+        })
+    </script>
+
+</body>
+
+</html>

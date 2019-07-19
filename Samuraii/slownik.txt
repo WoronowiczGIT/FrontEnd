@@ -217,7 +217,18 @@ skew(deg)
 przy nadpisywaniu translformat musimy uwzglednić wsyzstkie wartości!!!
 w przeciwnym wypadku dodana zostanie domyślna -> 0;
 
+--
+CDN - content delivery network
+jQuery CDN -> minified -> paste to body
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 
+  $(".myClass") ->select myClass
+  .click()      ->on element clicked do..
+  .click(function(){}) ->execute function
+  .toggleClass("className") -> add or remove class when called
 
 
 

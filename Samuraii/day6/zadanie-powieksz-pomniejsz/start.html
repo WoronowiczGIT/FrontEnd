@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        :root {
+            --textSize: 80px;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        button {
+            font-size: 40px;
+        }
+
+        h1 {
+            display: block;
+            position: absolute;
+            font-family: arial;
+            font-size: var(--textSize);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ddd;
+            transition: 1.5s;
+        }
+
+        .larger:hover~h1 {
+            transform: translate(-50%, -50%) scale(2);
+        }
+
+        .smaller:hover~h1 {
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+
+        .border:hover~h1 {
+            /* jezeli w h1 nie zdefiniujemy bordera zerowego
+            to animacja zamiast sie cofac bedzie przerwana */
+            border: 20px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button class="larger">2xWiększy</button>
+    <button class="smaller">2xMniejszy</button>
+    <button class="border">Obramowanie</button>
+    <h1>Nazwa</h1>
+
+
+</body>
+
+</html>
