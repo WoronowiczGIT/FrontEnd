@@ -273,3 +273,29 @@ flex-basis: 100px; ->określa rozmiar zgodnie z osią główną, nie mniej niż 
 kontener zachowuje wymiary względem osi;
 
 
+--
+HTML
+<form> -> collects user input
+    action="/adress">
+    target="">
+        -> _self
+        -> _blank -> new tab
+        -> _parent, _top -> depends on iframe
+    
+    method=""
+        -> get 300 char limit / unsafe
+        -> post
+
+    <input type ="">
+        ->text -> plain text
+        ->radio -> checkbox
+        ->submit -> send
+
+radio -> name="" value="" checked
+submit -> value="some text"
+
+    <fieldset> group data in form
+        <legend> description of fieldset
+
+<select name="">
+    <option value="value">view layer<
