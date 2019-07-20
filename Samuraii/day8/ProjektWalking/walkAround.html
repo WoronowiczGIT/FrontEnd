@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+
+            top: 0;
+            left: 0;
+            display: block;
+            position: absolute;
+            width: 256px;
+            height: 314px;
+            background-image: url(walking.png);
+            animation: walk 1s infinite steps(8),
+                move 10s infinite linear,
+                rotate 10s infinite linear;
+        }
+
+        @keyframes walk {
+            100% {
+                background-position-x: -2048px;
+            }
+        }
+
+        @keyframes move {
+            25% {
+                top: 0;
+                left: calc(100% - 256px);
+            }
+
+            50% {
+                top: calc(100% - 314px);
+                left: calc(100% - 256px);
+            }
+
+            75% {
+                top: calc(100% - 314px);
+                left: 0;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                rotate: 0;
+            }
+
+            0.1% {
+                rotate: 180deg;
+            }
+
+            24% {
+                transform: rotate(180deg);
+            }
+
+            25% {
+                transform: rotate(270deg);
+            }
+
+
+
+            50% {
+                transform: rotate(270deg);
+            }
+
+            51% {
+                transform: rotate(360deg);
+            }
+
+            75% {
+                transform: rotate(360deg);
+            }
+
+            76% {
+                transform: rotate(450deg);
+            }
+
+            100% {
+                transform: rotate(450deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+</body>
+
+</html>

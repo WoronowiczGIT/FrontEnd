@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            animation: fade 3s infinite ease;
+
+        }
+
+        img:nth-child(1) {
+            animation-direction: alternate;
+
+        }
+
+        img:nth-child(2) {
+            animation-direction: alternate-reverse;
+
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img1.jpg" alt="">
+    <img src="img2.jpg" alt="">
+</body>
+
+</html>

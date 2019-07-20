@@ -249,8 +249,26 @@ jQuery CDN -> minified -> paste to body
         animation-play-state:
             running -> d'Oh.
             paused -> d'Oh.
+--
+steps()
+parametre 1 - > ilosc krokow
+parametr 2 -> 
+    start -> omija 0% (omija start! lol)
+    end -> omija 100% (omija end :-) )
 
 
+--
+Emet skrót:
+p{paragraph content}>span{ span content}*3
+tworzy 3 spany w paragrafie
 
+button -> domyślnie jest border-box'em = ma padding i centrowanie;
+
+--flexbox:
+domyślnie elementy zajmujom min wymaganego miejsca
+flex-direction: row / column / row-reverse / column-reverse -> szeregeuje elementy
+align-items: stretch -> domyślny paramter, rozciaga prostopadle wg osi;
+flex-basis: 100px; ->określa rozmiar zgodnie z osią główną -> nadpisuje szerokość;
+kontener zachowuje wymiary względem osi;
 
 

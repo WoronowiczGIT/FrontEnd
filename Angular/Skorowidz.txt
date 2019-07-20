@@ -1,0 +1,45 @@
+
+instalacja angulara:
+- zainstaluj Node.js + npm
+sprawdz:
+cmd> node -v
+cmd> npm -v   
+    
+instalacja angulara:
+cmd> npm install -g @angular/cli
+
+nowy projekt:
+cmd>ng new projectName
+obsługa:
+cmd>cd projectName
+cmd>ng server
+
+extension w VSC:
+Angular Extension Pack 7.2
+--
+TypeScript instalacja:
+cmd> npm install -g TypeScript
+
+TypeScript -> nie musi być kompilowany do JS aby dzialać,
+ ale skompilowany dziala szybciej
+kompilowanie TS -> JS
+normalnie - tsc fileName.ts 
+dynamicznie - tsc fileName.ts -w
+
+kompilator w trybie>tsc fileName -w --sourcemap
+pozwala na debuggowanie na podstawie TS
+
+--
+deklarowanie typów:
+
+nazwa: typ = wartość;
+imie: string = 'Asia';
+
+wartość określa typ, więc nie zawsze musimy go deklarować;
+typy podstawowe:
+string
+number
+tablice -> name: string[] = ['value1','value2'];
+Lista -> listName: Array<Date> = [new Date(), new Date]()
+pair -> [typ1,typ2] = ['val1',val2]
+any -> name = value;
