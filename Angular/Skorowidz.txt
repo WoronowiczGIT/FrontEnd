@@ -1,4 +1,4 @@
-
+Angular CLI - narzędzie do budowy i zarządzania aplikacją angularową
 instalacja angulara:
 - zainstaluj Node.js + npm
 sprawdz:
@@ -12,7 +12,9 @@ nowy projekt:
 cmd>ng new projectName
 obsługa:
 cmd>cd projectName
-cmd>ng server
+cmd>ng serve 
+            -> hostuje servis na localhost:4200
+            -> right click on command line url to browse
 
 extension w VSC:
 Angular Extension Pack 7.2
@@ -26,9 +28,14 @@ kompilowanie TS -> JS
 normalnie - tsc fileName.ts 
 dynamicznie - tsc fileName.ts -w
 
-kompilator w trybie>tsc fileName -w --sourcemap
+kompilator w trybie>tsc fileName -w --sourcemap !!!!
 pozwala na debuggowanie na podstawie TS
-
+--
+komiilowanie
+1) otwórz wlasciwy terminal(lokalizacje)
+2) ZAPISZ ZMIANY!
+3) tsc name.ts
+4) node name.js
 --
 deklarowanie typów:
 
@@ -43,3 +50,140 @@ tablice -> name: string[] = ['value1','value2'];
 Lista -> listName: Array<Date> = [new Date(), new Date]()
 pair -> [typ1,typ2] = ['val1',val2]
 any -> name = value;
+
+-> klasa nie musi mieć takiej samej nazwy jak plik
+-> what is routing?
+
+angular-cli.json -> renamed to -> angular.json
+
+--
+STRUKTURA
+e2e: 
+    -> testy końcowe
+
+node_modules:
+    -> moduły wykorzystywane przez projekt
+    -> generowane na podstawie package.json
+        ^ w nazwie określa minimalną wersje koneiczna do pobrania
+
+package-lock.json:
+    -> opisuje wykorzystywane moduły,
+    -> opisuje to co zostało już pobrane
+
+src: -> !!!
+    -> app
+        -> tu znajduje się nasz kod
+            -> app.module.ts
+            -> moduł naszej aplikacji
+    -> assets
+        -> pliki graficzne wykorzystywane przez aplikacje
+    -> enviroments
+        -> pliki do konfiguracji wersji produkcyjnej / developerskiej
+    -> index.html
+        -> strona startowa
+    -> main.ts
+        -> służy do odpalenia aplikacji
+    -> style.css
+        -> globalne style.css
+
+angular.json:   -> !!!
+    -> konfuguruje aplikację
+        -> katalog główny
+        -> ścierzki dostępów
+        -> tablice styli -> np dla bootstrapa
+
+karma.conf.js:
+    -> kolejna konfiguracja
+
+tslint.json:
+    -> sprawdza poprawność kodu w typescript'cie
+
+--
+@NgModule
+
+src/app/app.module.ts --> !!!!
+    -> declarations: AppComponent
+        -> dyrektywy /pipe'y / komponenty
+    -> bootstrap: [AppComponent]
+        -> tu startuje drzewo komponentów
+    -> imports: [BrowserModule]
+        -> Moduł odpowiedzialny za użycie przeglądarki
+        -> jeśli chcemy użyć Http musimy tu go dodać
+    -> providers: [informacje o naszych servisach]
+
+--
+lifeCycle
+ app.module.ts -> exportowany
+ main.ts 
+    ->  importuje app.module.ts i 
+        go analizuje w bootstrap.module
+
+    -> odpala AppComponent jako pierwszy
+
+    app.component.ts -> 
+    selector: 'app-root' ->tego uzywamy w index.html
+    <body><app-root> </app-root></body>
+
+--
+Komponent
+
+-> musi mieć dekorator @Component
+-> stanowi budulec aplikacji angularowej
+-> musi być przypisany do NgModule aby móc być używanym
+-> jest powiązany z plikami html / css
+-> zawiera logikę odpowiedzialną za wyświetlanie danych w widoku html
+-> posiada selektor np. <app-root>     
+
+budowa:
+
+import { Component } from '@angular/core';
+
+@Component({ -> adnotacja 'Component'
+  selector: 'app-root', -> selektor(d'Oh :-))
+  templateUrl: './app.component.html', -> html powiazany z komponentem
+  styleUrls: ['./app.component.css']   -> style powiazane z komponentem
+})
+export class AppComponent {
+  title = 'angular-kurs';
+}
+
+-> po odpaleniu (ng serve) wszystkie zmiany w komponentach są wprowadzane natychmiast
+
+--
+TWORZENIE KOMPONENTOW
+-> wejdz w katalog projektu
+-> ng generate component componentName
+-> alias: ng g c name
+    -> --flat true -> wszystkie elementy luzem w katalogu app
+-> src -> app -> componentName 
+
+-> selektory generowane na podstawie angular.json
+    -> prefix app
+    -> selektory nie mogą się powtarzać!!!!
+
+.component.spec.ts -> testowanie componentow
+jesli chcey bez testow to generujemy komponent:
+
+ng generate component name --spec false
+
+dodawanie selektorów powiazanych z komponentami do app.component.html
+powoduje ich automatyczne dopisanie i zaimportowanie do app.module.ts !
+
+w konsekwencji czego -> usuwasz moduł -> usuń też importy!!!
+
+komponent może składać się tylko i wyłącznie z pliku.ts
+ale w takim wypadku musimy zadeklraować w @Component template i style.
+używamy `` <- znak nad tyldą
+
+@Component({
+  selector: 'app-test',
+  // templateUrl: './test.component.html',
+  // styleUrls: ['./test.component.css']
+  template: `<p>TS bitches</p>`,
+  styles: [`p{font-size: 32px; color: blue;}`]
+})
+
+przydatne, np kiedy komponent nie ma mieć żadnego widoku -> jego zadaniem jest wczytanie np innego componentu:
+template:`<app-comp></app-comp>`, -> gdzie app-comp to selector componentu który chcemy wczytać !!
+
+kiedy html i css znajduja sie w kodzie komponentu wtedy mówimy o komponentach inline;
