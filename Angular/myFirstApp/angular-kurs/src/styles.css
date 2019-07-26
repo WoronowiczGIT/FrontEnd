@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: darkslategrey;
+  color: white;
+  font-size: 32px;
+}
+
+* {
+  font-size: 20px;
+}
+
+a {
+  display: block;
+  color: white;
+  margin-left: 25px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+p {
+  color: black;
+  margin: 0;
+  text-align: left;
+
+}
+
+span {
+  display: block;
+  color: white;
+  width: 100%;
+  background-color: red;
+  text-align: center;
+}
+
+.tab {
+  background-color: bisque;
+}

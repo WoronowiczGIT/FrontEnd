@@ -1,0 +1,16 @@
+img {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 110%;
+
+  height: 100px;
+}
+
+.binding {
+  display: block;
+}
+
+.color2 {
+  color: blue;
+}

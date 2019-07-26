@@ -1,0 +1,13 @@
+<span>wyswietlanie danych i pipe-y</span>
+<p>random data = {{this.someString}}</p>
+<p>the pi number = {{pi | number:'1.1-2'}}</p>
+<p>current date = {{date | date: 'dd-MM-yy'}}</p>
+<p>dog object = {{dog}}</p>
+<p>dog name = {{dog.name}}</p>
+<p>Component method output = {{this.showDog()}}</p>
+<p>Dog method output = {{dog.bark()}}</p>
+<p>działania na liczbach:</p>
+<p>2 + 2 = {{2 + 2}}</p>
+<p>my null dog: {{dog2?.name}}</p>
+
+<!-- we need to use this. so much because other components share same methods -->

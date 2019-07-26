@@ -1,0 +1,29 @@
+<p>dni tygodnia z wykorzystaniem ngFor</p>
+<span>dyrektywa ngFor</span>
+<ul>
+  <li *ngFor="let day of dniTygodnia">
+    {{day}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let kot of cats">
+    {{kot.meow()+' give food'}}
+  </li>
+</ul>
+<p> 3 x component generated with ngFor</p>
+<app-test *ngFor="let i of [1, 2, 3]"></app-test>
+
+<span>dyrektywa ngIF</span>
+<p class="tab">koty parzyste</p>
+<div *ngFor="let myCat of cats; let e = even">
+  <p *ngIf="e">
+    moj kot ma na imie {{myCat.name}} i ma {{myCat.age}} lat.
+  </p>
+</div>
+<p class="tab">koty mlodsze niz 15 lat</p>
+<div *ngFor="let cat of cats; let e = even">
+  <p *ngIf="cat.age < 15">
+    moj kot ma na imie {{cat.name}} i ma {{cat.age}} lat.
+  </p>
+</div>

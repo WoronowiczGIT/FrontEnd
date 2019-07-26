@@ -1,0 +1,29 @@
+<span> DATA BINDING </span>
+<p class="tab">Property binding</p>
+<div>
+  <input [value]="inputText">
+</div>
+
+<p class="tab">Two-Way-Binding</p>
+<div>
+  <input [(ngModel)]="inputTwoWay">
+  <p class="tab">{{inputTwoWay}}</p>
+</div>
+
+<p class="tab">Event Binding</p>
+<div>
+  <input (click)="callClick($event)">
+  <button [disabled]="isbuttON">Dodaj</button>
+  <p class="tab">{{showClick}}</p>
+</div>
+
+<span> property binding </span>
+<div class="binding">
+  <!-- sterujemy dynamicznie css-owymi klasami -->
+  <h1 [className]="CSScolorClass"> header zbindowany z colorClass</h1>
+  <img [src]="logoUrl">
+  <!-- modyfikujemy maxymalna dlugosc wejscia -->
+  <input [maxLength]="maxLength" [value]="inputText">
+
+  <button [disabled]="isbuttON" (click)="change()">Dodaj</button>
+</div>

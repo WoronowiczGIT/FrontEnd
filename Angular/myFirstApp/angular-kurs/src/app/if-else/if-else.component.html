@@ -1,0 +1,55 @@
+ <span> if else</span>
+
+ <ng-template #templateName>
+   <p>no such car</p>
+ </ng-template>
+
+ <div *ngIf="cars.length > 4; else templateName">
+   <div *ngFor="let car of cars">
+     {{car.start()}}
+   </div>
+ </div>
+
+ <ng-template #isGreater>
+   <p>GREATER</p>
+ </ng-template>
+ <ng-template #isLess>
+   <p>LESS</p>
+ </ng-template>
+ <ng-container *ngIf="this.a > this.b; then isGreater;else isLess">
+ </ng-container>
+
+ <span>*ngSwitch</span>
+
+ <p *ngFor="let day of days">
+   <ng-container [ngSwitch]="day">
+
+     <ng-container *ngSwitchCase="'poniedzialek'"> montag </ng-container>
+     <ng-container *ngSwitchCase="'wtorek'"> dienstag </ng-container>
+     <ng-container *ngSwitchCase="'sroda'"> mittwoch </ng-container>
+     <ng-container *ngSwitchCase="'czwartek'"> donnerstag </ng-container>
+     <ng-container *ngSwitchCase="'piatek'"> freitag </ng-container>
+     <ng-container *ngSwitchCase="'sobota'"> samstag </ng-container>
+     <ng-container *ngSwitchDefault> sonntag </ng-container>
+
+   </ng-container>
+ </p>
+
+ <span> *ngIF vs Hidden</span>
+ <p class="tab"> ngIf example</p>
+ <button (click)="show1()">NgIF</button>
+
+ <ng-container *ngIf="isVis">
+   <ng-container *ngFor="let car of cars">
+     <p>{{car.start()}}</p>
+   </ng-container>
+ </ng-container>
+
+ <p class="tab"> hidden example</p>
+ <button (click)="show2()">Hidden</button>
+
+ <div [hidden]="isHid">
+   <ng-container *ngFor="let car of cars">
+     <p>{{car.start()}}</p>
+   </ng-container>
+ </div>
