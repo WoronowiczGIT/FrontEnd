@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NgForNgIFComponent } from './ng-for-ng-if/ng-for-ng-if.component';
 import { IfElseComponent } from './if-else/if-else.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DataBindingComponent } from './data-binding/data-binding.component';
     MenuComponent,
     NgForNgIFComponent,
     IfElseComponent,
-    DataBindingComponent
+    DataBindingComponent,
+    EventBindingComponent
   ],
   imports: [
     BrowserModule,

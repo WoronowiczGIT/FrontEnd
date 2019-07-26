@@ -186,4 +186,107 @@ używamy `` <- znak nad tyldą
 przydatne, np kiedy komponent nie ma mieć żadnego widoku -> jego zadaniem jest wczytanie np innego componentu:
 template:`<app-comp></app-comp>`, -> gdzie app-comp to selector componentu który chcemy wczytać !!
 
+INLINE
 kiedy html i css znajduja sie w kodzie komponentu wtedy mówimy o komponentach inline;
+postępujemy tak kiedy component nie jest wyswietlany w html, a jedynie sluzy jako kontener dla innych komponentow.
+
+angular generuje selektory na podstawie nazwy komponentu i zadeklarowanego rpefixu (angular.json)
+
+--
+WYSWEITLANIE DANYCH ZKOMPONENTOW
+- interpolacja stringow {{name}}
+- *ngFor dla list i tabeli
+- *ngIf instrukcje warunkowe
+
+--
+PIPE-y
+dla formatowania textu uzywamy pipe API
+{{some content | uppercase}}
+className?.method(); -> ? sprawdza czy element jest undefined, albo nie został jeszcze zainicjalizowany.
+alternatywny zapis : {{dog && dog.name}}
+
+--
+Dyrektywa *ngFor
+
+dyrektywa działa jak foreach (iteruje po kolekcjach ) -> deklarujemy w elemencie html po czym ma iterować a następnie obsługujemy element. 
+CAla dyrektywa musi byc podana w cudzyslowiu
+    <ul>
+      <li *ngFor="let day of dniTygodnia">
+        {{day}}
+      </li>
+    </ul>
+
+po ; mozemy odwolac sie do indexu:
+<div *ngFor="let e of elements; let i = index">
+index {{i}} odpowiada elementowi {{e}}
+</div>
+w ramach 'i' mozemy odwołać się na zasadzie nth-child
+i = index / even / odd / first / last
+
+umieszczajac ngFor w dyrektywie komponentu możemy tworzyć nowe komponenty w kodzie strony:
+<app-component *ngFor="let i of [1, 2, 3]"></app-component>
+wygeneruje 3 x app-component w danym komponencie
+
+--
+*ngIf 
+steruje wyświetlaniem danych
+ mozemy wykorzystac w polaczeniu z ngFor do wyswietlania okreslonych elementow:
+ <div *ngFog="let day of days; let e = even">
+ <p *ngIf="e">print content with even index</p> 
+ </div>
+
+ validacji elementow:
+ <p *ngIf="array.length > 0">print element</p>
+
+konstrukcja zapytania:
+<ng-container *ngIf =" boolean condition; then tempName; else otherTempName"></ng-container>
+-- 
+ng-container 
+component angularowy odporny na zmiane stylow
+<ng-container *ngFor="let e of elements">
+unaffected content
+</ng-container> 
+
+--
+ng-template
+predefiniowany element do ktorego mozemy się odwoływać
+
+<ng-template #temlateName>
+<p>some predefined content</p>
+</ng-template>
+
+<div *ngIf = "dogs.length > 0; else templateName"
+        // some desirable content that get replaced by template
+</div>
+
+--
+*ngSwitch
+pole które będziemy sprawdzać deklarujemy:
+<ng-container [ngSwitch]="name">
+
+warunki deklarujemy:
+<ng-container *ngSwitchCase="'condition'"> action </ng-container>
+
+warunek domyślny deklarujemy na końcu:
+<ng-container *ngSwitchDefault> default content </ng-container>
+
+--
+Angular modyfikuje DOM (document object model) w czasie rzeczywistym
+dyrektywy strukturalne (*ngIf, *ngFor etc)- usuwaja elementy z DOM
+- malo przyjazne w przypadku uzycia duzych komponentow
+
+--
+DATA BINDING
+wiazanie danych
+Property BINDING
+    [target]="expression"
+    component -> widok
+Two-Way-BINDING
+    [(ngModel)]="expression"
+    component <-> widok
+Event BINDING
+    (target)="statement"
+    eventy -> component
+
+two way binding : need ti add import to app.module.ts
+import { FormsModule } from '@angular/forms'; !!!!!!

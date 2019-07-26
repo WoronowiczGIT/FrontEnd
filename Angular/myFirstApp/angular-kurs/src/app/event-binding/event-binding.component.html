@@ -1,0 +1,12 @@
+<span>event binding</span>
+
+<h3 [className]="myColor"> Ten text zmieni kolor</h3>
+<input [disabled]="isDisabled" (focus)="onFocus()">
+<br>
+<input [disabled]="isDisabled" (click)="onClick($event)">
+<br>
+<input [disabled]="isDisabled" (mousemove)="onMouseMoved($event)">
+<br>
+<input [disabled]="isDisabled" (paste)="onPaste()">{{inputText}}
+<br>
+<button (click)="change()">Zmiana!</button>
