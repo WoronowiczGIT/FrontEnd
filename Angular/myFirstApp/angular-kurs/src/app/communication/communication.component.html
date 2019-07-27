@@ -1,0 +1,10 @@
+<span>Communication</span>
+<p>przypisujemy zadania dziecka rodzicowi</p>
+<app-child [zadaniaDziecka]="zadaniaRodzica"></app-child>
+<div *ngFor="let task of zadaniaRodzica">
+  {{'zadanie rodzica to ' +task}}
+</div>
+
+<!-- w pierwszym komponencie nie obsłużyliśmy emittera
+ wiec przyciski nie maja zadnej funkcji -->
+<app-child (myEventHandler)="select($event)"></app-child>

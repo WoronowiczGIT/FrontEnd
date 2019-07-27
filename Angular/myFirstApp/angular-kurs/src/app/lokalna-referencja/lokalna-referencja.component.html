@@ -1,0 +1,17 @@
+<span>lokalna referencja</span>
+<!-- lokalna referencja do elementu -->
+<input #inputText>
+
+<button (click)="add(inputText)">Dodaj</button>
+
+<app-child #childRef></app-child>
+
+<span>Content projection</span>
+
+<p>aby dokleic kod html do komponentu uzywamy tagow</p>
+<p> &lt;ng-content> content &lt;/ng-content></p>
+<p>w dziecku</p>
+
+<app-child>
+  <h1>ekstra content</h1>
+</app-child>

@@ -1,0 +1,16 @@
+<div class="zadania">
+  Lista zadań
+  <ul *ngIf="activeTasks.length > 0; else noTask">
+    <!-- generuj zadania przy uzyciu ngFor -->
+    <li *ngFor="let myTask of activeTasks">
+      {{myTask}}
+      <button (click)="callRemove(myTask)">DEL</button>
+      <button (click)="callDone(myTask)">DONE</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noTask>
+  <br><br>
+  <p>You dont have any tasks to do</p>
+</ng-template>

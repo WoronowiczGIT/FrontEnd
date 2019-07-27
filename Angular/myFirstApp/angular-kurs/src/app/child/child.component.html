@@ -1,0 +1,12 @@
+<p>cialo dziecka</p>
+<div *ngFor="let c of zadaniaDziecka">
+  {{'zadanie dziecka to ' + c}}
+  <button (click)="handle(c)">zaznacz</button>
+</div>
+<!--
+po kliknieciu, dziecko odpala metode handle - emitujaca event,
+rodzic obługuje event dziecka poprzez '@output EventEmitter',
+rodzic po wystapieniu eventu odpala wlasna metode metode select(); -->
+
+<!-- tu wyswietli sie kod doklejany w rodzicu -->
+<ng-content></ng-content>

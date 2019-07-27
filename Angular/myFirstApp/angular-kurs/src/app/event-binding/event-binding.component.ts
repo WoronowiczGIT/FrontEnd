@@ -9,9 +9,21 @@ export class EventBindingComponent implements OnInit {
   isDisabled = true;
   inputText = 'some text';
   myColor = 'cssColor1';
+  //event binding
+  profession = 'programista';
+  abilities = 'coding';
 
-
-
+  saveP(event) {
+    this.profession = event.target.value;
+  }
+  saveA(event) {
+    this.abilities = event.target.value;
+  }
+  // two way binding
+  // tslint:disable-next-line: member-ordering
+  dogName = 'Reksio';
+  // tslint:disable-next-line: member-ordering
+  dogSkills = 'run like mad';
   constructor() { }
 
   ngOnInit() {

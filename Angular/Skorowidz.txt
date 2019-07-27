@@ -289,4 +289,108 @@ Event BINDING
     eventy -> component
 
 two way binding : need ti add import to app.module.ts
-import { FormsModule } from '@angular/forms'; !!!!!!
+>>>>>  import { FormsModule } from '@angular/forms'; !!!!!! <<<<<
+then use [(ngModel)]="name"
+
+style globalne w tym reset robimy za pomocą pliku styles.css !!! :-)
+routing możemy ustawić w module routingowym!
+
+--
+Event
+obsługujemy eventy poprzez wysołanie metody z poziomu html
+="method($event)"
+potem obsługujemy event z poziomu TS np:
+event.target.value - wartosc pola
+event.clientX / clientY - koordynaty myszy
+
+eventy binding html: binduje metody z eventami w html
+(focus) -> clickniety
+(click) -> d'Oh;
+(mousemove) -> d'Oh
+(paste) -> wklejono coś
+(input) -> coś zostało wpisane
+
+property binding: binduje pola komponentu do elementow html
+[value]
+[disabled]
+[className]
+[] -> Ctrl + space
+do bindowania stringow uzywamy zapisu [value]="'string'";
+
+two way binding [()] <- makes sense ;-)
+pozwala nam uprościć kod -> nie musimy pisac metod
+
+--
+Routing
+
+-> generate new component -> app.module.ts -> 
+copy component import into app-routing.module ->
+add path to Routes :  { path: 'folderName', component: ClassName },->
+add router link to desired component:
+<a routerLink="/folderName"> link name </a> ->
+przekierowana treść znajdzie się w tym samym kontenerze co
+<router-outlet></router-outlet>, wieć jeżeli chcemy aby content odpalał się w inym oknie musimy zastosować odpowiednia enkapsulacje.
+
+--
+template: pozwala podmienić kod html na inny przy uzyciu ngIF
+<ng-template #name></ng-template>
+
+--
+komunikacja miedzy komponentami
+
+@Input() -> tworzy property w komponencie
+
+dekorator @input przed polem sprawia, że pole może być używane jako properties w selektorze danego komponentu:
+@input() name = ' my name is';
+<app-child [name]=""></app-child>
+
+NOTE: przed użyciem trzeba zaimportować moduł z angular core, do komponentu dziecka.
+import { Component, OnInit<----, Input } from '@angular/core';
+
+--
+@Output() -> tworzy event w komponencie
+EventEmitter 
+import z "angular core"!!, sluzy do wysylania eventu w górę, występuje razem z @Output
+!!! sprawdzaj importy bo nazwy się powtarzają 1!!
+
+--
+#nazwa w selektorze albo w elemencie html daje nam dostep
+poprzez alias przy uzyciu dekoratora @ViewChild('nazwa')
+po okresleniu jakiego typu jest to element mozemy go uzywac
+
+--
+Cykkl zycia
+Interfejsy w kolejnosci wywolywania:
+
+implements OnChanges ->
+ngOnChanges - obserwuje zmiany zachodzące w komponentach
+wywoluje sie przy kazdej zmianie referencji, zmiany stanu pomija.
+tj. name = name + 'ciapek' pomija / name = new name('ciapek') widzi.
+
+implements OnInit ->
+ngOnInit
+wywoluje sie 2gie po inicjalizacji / konstruktorze
+warto wrzucic wszystkie operacje jakie chcemy wykonac zaraz po konstrukcji obiektu.
+
+implements DoCheck ->
+ngDoCheck
+wywoluje sie sie po kazdej zmianie wywolanej eventem.
+
+implements AfterContentInit
+ngAfterContentInit
+
+implements AfterContentChecked
+ngAfterContentChecked
+caly czas sprawdza widok
+
+implements AfterViewInit
+ngAfterViewInit
+
+implements AfterViewChecked
+ngAfterViewChecked
+caly czas sprawdza widok
+
+implements OnDestroy
+ngOnDestroy
+wywolywana kiedy komponent jest niszczony
+mozemy wykonac np operacje zapisu do BD etc

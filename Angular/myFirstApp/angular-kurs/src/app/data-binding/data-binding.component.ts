@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-binding.component.css']
 })
 export class DataBindingComponent implements OnInit {
-  inputText = 'Some starting text';
+  inputText = 'to pole ma maks 5 znakow';
   inputTwoWay = '';
   showClick = '';
   isbuttON = true;
@@ -23,9 +23,9 @@ export class DataBindingComponent implements OnInit {
     setTimeout(() => { this.isbuttON = false; }, 3000);
   }
   change() {
-    this.inputText = ' Inny text inny Kolor';
-    this.CSScolorClass = 'color2';
     this.maxLength = 10;
+    this.inputText = ' to pole ma maks ' + this.maxLength + ' znakow ';
+    this.CSScolorClass = 'color2';
     this.logoUrl = 'https://angular.io/assets/images/logos/angular/angular.png';
   }
 

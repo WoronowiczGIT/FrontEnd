@@ -1,0 +1,21 @@
+<span>TDL 2.0 with component communication</span>
+
+<!-- komponent odpowiedzialny za dodawanie taskow -->
+<div class='container'>
+  <app-tdl-add-task (emitTask)="add($event)"></app-tdl-add-task>
+</div>
+
+
+<!-- komponent odpowiedzialny za obsluge aktywnych taskow -->
+<div class="container">
+  <div>
+    <!-- todo otrzymuje liste taskow od tdlv2 i wysyla informacje co chcemy znimi zrobic -->
+    <app-tdl-todo [activeTasks]="tasksList" (emitDone)="done($event)" (emitRemove)="remove($event)"></app-tdl-todo>
+  </div>
+
+  <!-- tdl-done dostaje liste wykonanych zadan i ja wyswietla -->
+  <div>
+    <app-tdl-done [doneList]="taskDone"></app-tdl-done>
+  </div>
+
+</div>

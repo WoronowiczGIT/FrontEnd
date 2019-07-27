@@ -10,3 +10,21 @@
 <input [disabled]="isDisabled" (paste)="onPaste()">{{inputText}}
 <br>
 <button (click)="change()">Zmiana!</button>
+
+<span> events </span>
+
+<p>Ten pracownik to {{profession}}, i potrafi {{abilities}}</p>
+<label for="male"> Zawod </label>
+<input [value]="profession" (input)="saveP($event)">
+<br>
+<label for="male">Abilities</label>
+<input [value]="abilities" (input)="saveA($event)">
+
+<span> two way binding </span>
+
+<p>Ten pies to {{dogName}}, i potrafi {{dogSkills}}</p>
+<label for="male"> imie </label>
+<input [(ngModel)]="dogName">
+<br>
+<label for="male">hobby</label>
+<input [(ngModel)]="dogSkills">

@@ -1,0 +1,9 @@
+<div class="wykonane">
+  Wykonane zadania: {{doneList.length}}
+  <ul>
+    <!-- generuj zadania przy uzyciu ngFor -->
+    <li *ngFor="let myTask of doneList">
+      {{myTask}}
+    </li>
+  </ul>
+</div>
