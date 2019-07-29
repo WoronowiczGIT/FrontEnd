@@ -1,0 +1,9 @@
+w TS
+
+deklarowanie pustej tablicy:
+tasksList: Array<string> = [];
+dodawanie elementow do tablicy:
+this.tasksList.push(this.newTask);
+
+ // usuwanie przez filtrowanie
+    this.tasksList.filter(e => e !== task);

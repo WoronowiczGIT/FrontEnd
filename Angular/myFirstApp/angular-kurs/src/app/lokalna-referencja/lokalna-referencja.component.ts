@@ -8,11 +8,11 @@ import { ChildComponent } from '../child/child.component';
 })
 export class LokalnaReferencjaComponent implements OnInit {
 
-  @ViewChild('childRef')
+  @ViewChild('childRef', { static: false })
   myChildComponent: ChildComponent;
 
   //wyciagamy element html na podstawie aliasu
-  @ViewChild('inputText')
+  @ViewChild('inputText', { static: false })
   myInput: ElementRef;
 
 

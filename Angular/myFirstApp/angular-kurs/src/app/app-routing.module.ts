@@ -11,6 +11,9 @@ import { CommunicationComponent } from './communication/communication.component'
 import { LokalnaReferencjaComponent } from './lokalna-referencja/lokalna-referencja.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 import { TDLv2Component } from './tdlv2/tdlv2.component';
+import { StylowanieComponent } from './stylowanie/stylowanie/stylowanie.component';
+import { KlikaczComponent } from './serviceDemo/klikacz/klikacz.component';
+
 
 const routes: Routes = [
   { path: 'menu', component: MenuComponent },
@@ -23,6 +26,8 @@ const routes: Routes = [
   { path: 'lokalna-referencja', component: LokalnaReferencjaComponent },
   { path: 'life-cycle', component: LifeCycleComponent },
   { path: 'tdlv2', component: TDLv2Component },
+  { path: 'stylowanie', component: StylowanieComponent },
+  { path: 'klikacz', component: KlikaczComponent },
 
 
 

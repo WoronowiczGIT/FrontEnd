@@ -9,8 +9,6 @@ export class LCChildComponent implements OnInit {
 
   @Input()
   inputText: string;
-  @Input()
-  inputDog: Dog;
 
   show = true;
   content() {

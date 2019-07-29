@@ -1,0 +1,411 @@
+git clone <path> . -> kropka na koñcu klonuje zawartoœæ repozytorium do tego katalogu zamiast tworzyæ nowy
+git commit . -m"comment" -> po raz kolejny kropka zapisuje zmiany we wszystkich œledzonych plikach
+
+--
+konfiguracja
+	- git-scm.com -> download
+	- scm -> source control management
+
+git config --global user.name "identyfikator drugi cz³on"
+-> zmienne ze spacjami podajemy w uszach
+
+git config --global user.email valid@email.com
+
+--global -> modyfikujemy dla wszystkich repozytoriów
+
+git config user.name ->wyswietl name
+git config user.email -> wyswietl email
+
+ustawienie domyœlne odpalenie gita w naszym repo
+gitbash -> starting directory -> nasz katalog roboczy
+
+win + 1,2,3... -> odpalenie appki przypietej do taskbara
+
+autocomplete -> w windows jest instalowany domyœlnie
+
+inteliSense pod windows AutoHotKey app -> run scripts in autohotkey
+
+ | clip -> adnotacja na koncu przechwytuje informacje i zapisuje w schowku
+zamiast wyswietlac, przyklad:
+git config user.name | clip -> ctrl + v -> "imie nazwisko"
+
+Gitk -> repository browser -> sluzy do podgladania
+
+zmiana edytora w GIT:
+git config core.editor -> wyswietl edytor
+git config core.editor notepad
+
+--
+commit / revision / version -> stan repozytorium
+
+pierwszy commit -> root
+powinniœmy stworzyæ go na samym pocz¹tku projektu
+zawiera on plik README.md w którym jest opis projektu z uzyciem jezyka
+"MarkDown" -> cos jak html
+**txt** -> bold
+*txt* -> italic
+_txt_ -> underline
+
+stwórz nowy plik readme ->
+notepad readme.md / edit readme.md
+ls -> lista plikow
+
+git commit --help 
+
+nowy plik :  touch name.txt
+
+--
+Working copy
+katalog z plikami na których pracujesz
+sprawdzamy: git status
+
+jezeli status jest dluzszy niz jeden ekran, juz dawno powinien pojsc commit
+
+SYSTEMY KONTROLI VERSJI
+CVCS -> centralized vers control system
+	-> ka¿da najmniejsza operacja wymaga polaczenia sieciowego
+	-> zawsze musisz byc online
+	-> lepszy przy ogromnych projektach
+DVCS -> kazda maszyna posiada pelna versje projektu
+	-> przy du¿ych plikach mno¿ymy byty a repozytorium puchnie
+	-> nie ma numerow commitow, sa hashe
+
+--
+git commit . -> zawsze z kropka
+
+po zmianie -> git status -> jezeli sa zmiany
+-> git diff -> pokazuje zmiany w konsoli
+-> git difftool -> pokazuje ³adnie :-) 
+mozemy uzyc roznych narzedzi np: winmerge
+musimy ustawic je jako domyslne narzedzie:
+git config --global diff.tool winmerge
+<nie jest instalowany z gitem>
+
+git config --global difftool.prompt false -> nie pyta o pozwolenie przy odpalaniu winmerge
+
+--
+GIT LOG
+
+pokazuje historie projektu
+-> wychodzimy literkq 'q' !!!
+
+git log -> flagi
+	-n4 -> ostatnie 4 commity
+	--oneline -> zapis w jednej lini
+	--since='{15 minutes ago}' -> commit z przed 15min
+
+gitk -> alternatywa dla git log
+
+--
+git tag finished_init
+
+-> dobra zasada -> koniec inicjalizacji projektu
+
+--
+tag -> pointer wskaznik etykieta
+sa nieruchome i stale w tym samym miejscu historii przy tym samym commicie
+
+tagi:
+	lightweight: to tylko dodatkowe jedno slowo doczepione do commita
+		uzywamy na wlasnych branchach, prywatnie
+	annotated: lightweight + informacje al'a commit -> tresc/autor/data
+		uzywamy tam gdzie jest dostep publiczny
+
+dodawanie LW tagow do commitow:
+	git tag someTagText <#number of commit>
+
+dodawanie AT do commitow
+	git tag tagName #number -a -m " accurate description of event"
+
+WYKORZYSTANIE:
+logi od konkretnego taga w dol<starsze>:
+git log <tagName>
+
+git show <tagName> -> pokazuje informacje o commicie (nie o tagu!)
+
+git tag -> wypisuje wszystkie tagi
+git tag name-> dodaje tag do aktualnego commita commita
+git tag name <#number> -> dodaje tag do commitu #number
+git tag name <#commit> -a -m "messege" -> tworzy annotated tag
+git tag -d name -> kasuje tag o danej nazwie
+
+--
+NAVIGACJA PO HISTORII
+SHA1 - funkcja hashujaca:
+ -rodzic
+ -data
+ -autor
+ -msg
+
+Parent -> poprzedni commit
+	-> commity powstale przy mergowaniu moga miec wielu rodzicow
+-> bedzie SHA256 :-)
+
+~ ^ :referencje do poprzednich commitow
+np 
+git show #commit~4 : pokaz 4 commity wczesniej
+git show #commit^^^ : liczba ^ oznacza o ile commitow chcemy sie cofnac 
+
+. <- zakresy zapisow
+git log --oneline #lastName..#firstName ->(excluding last)
+workaround:->git log --oneline #lastName^..#firstName
+
+--
+BRANCHING
+master -> domyslna nazwa pierwszej galezi w repo
+w innych systemach (trunk / Main / default)
+nie zmieniaj nazwy galezi master! :-)
+
+Tip -> ostatni najnowszy commit w branchu
+
+wlasciwosci:
+- bezkosztowe
+- w commicie nie ma informacji w jakim branchu powstal
+- commity mozna migrowac miedzy branchami
+- commit moze zawierac sie na jednej w wielu lub nawet zadnej galezi!!
+ skasowanie galezi nie oznacza skasowania commitu
+
+dzieki galeziom osoby pracujace nad projektem nie przeszkadzaja sobie
+
+git branch -> lista galezi
+git branch nazwa -> tworzy galaz
+git branch -d nazwa -> kasuje galaz
+git checkout -> umieszcza stan commita / galezi w naszym working directory
+
+tzn:
+git checkout tag -> przenosi do taga
+git checkout #number -> przenosi do commita
+znaki ^ ~ jak najbardziej maja tu zastosowanie
+
+git checkout - <-(tu jest minus) powrot na poprzednia galaz
+<a tak naprawde move last used HEAD to workind dir>
+git checkout -b nowagalaz -> tworzy nowa galaz i na nia przechodzi
+
+head -> pisane ma³ymi literami wskazuje na TIP -> referencja ostatniego commita galezi
+znajduja sie w git/refs/heads -> w srodku znajduja sie identyfikatory commitow
+
+HEAD -> pisane wielkimi literami
+	-> commit bedacy Ÿród³em aktualnej zawartoœci working copy(nasz aktualny commit)
+
+@ -> alias HEAD'a
+.git/HEAD
+tzn, ¿e 
+git show HEAD == git show @
+
+git show @@'{15 minutes ago}'
+ oznacza -> where was my HEAD 15 minutes ago
+git show HEAD@{number} -> pokazuje stan HEAD dana liczbe operacji temu
+
+--
+Detached HEAD state
+-> kiedy zrobisz checkout commita ktory nie jest tipem brancha
+-> ergo sprawdzasz jakiœ poprzedni stan projektu
+-> oznacza to, ¿e nie jesteœmy wtedy na ga³êzi
+	-> wiec commitowanie nie ma sensu
+	-> wracamy git checkout -
+-> mozemy uczynic z takiego commita np root nowej galezi:
+git checkout -b new branch
+
+checkout-- <- OMG! dwa minusy 1! :-)
+-- maja na celu zaznaczyæ, ¿e odwo³ujemy siê do pliku a nie do ga³êzi
+bez nich te¿ zadzia³a ale jest niebezpieczne
+
+git checkout #commit -- nazwapliku.html -> pobranie pliku do WorkingDir z wybranego commita
+
+--
+zmiana nazwy galezi
+git branch -m newBetterName (move from one name to another)
+we need to be on branch to change it name
+
+--
+gitk --all -> pokazuje pe³ny projekt
+--
+Merge
+
+1)przechodzimy na ga³¹Ÿ która ma byæ wynikowa
+2) git merge desiredBranch
+
+ff -> Fast forward merge -> nie zostawia œladów w historii
+jest to mozliwe tylko kiedy galaz docelowa nie posiada commitow spoza galezi docelowej
+base == target
+
+3-ways merge -> czêœciej spotykany
+merguje kawa³ek po kawa³ku -> liniowo
+base -> najnowszy wspólny commit
+source -> wersja do z³¹czenia (ga³¹Ÿ Ÿród³owa)
+target -> wynikowy plik
+
+if base == source == target -> no change
+if base == source && base !=target -> take from target
+if base != source && base == target -> take from source
+if base != source && base != target -> CONFLICT!!!
+
+Octopus merge -> mergowanie wiele ga³êzi naraz
+
+merge commit -> commit z wiecej niz jednym rodzicem
+
+--
+Przenoszenie commitow miedzy galeziami -> cherry-pick
+1) tag desired commit
+2) switch to master
+3) git cherry-pick tagName
+
+-> nowy commit ma nowego rodzica i inna godzine = inny #
+wiec nowy commit jest klonem
+
+cherry-pick = 3way merge = generuje konflikty :-)
+
+kasowanie galezi przed mergem => git -D branchName <-duze D 
+
+--
+PRACA ZDALNA
+- rpo mo¿e byæ hostowane lokalnie
+
+dobra praktyka:
+2lub wiecej te same sklonowane repozytoria, ale w ka¿dym inny checkout
+np w 1)-> dokumentacja 2)-> jakis feature 3) bugfix etc...
+
+cd someDirectory/
+git clone ../my_project/ .  <- oznacza, ze 
+tresc repozytorium zostanie skopiowane do katalogu someDirectory,
+a nie powstanie nowy katalog w srodku zgodny z nazwa repo.
+
+git branch -vv -> pokazuje relacje w galezi
+very verbose
+
+origin -> domyœlna nazwa zdalnego repo, bedacego zrodlem komendy clone.
+
+refs -> referencje do commitow (wszystkie)
+remotes -> zdalne repozytoria
+origin -> nazwa zdalnego repo
+master -> galaz master w zdalnym repo (origin)
+
+git remote -> poda liste zdalnych repozytoriow
+git remote show origin ->
+adresy dla fetch
+adresy dla pull
+etc..
+
+--
+wysy³anie commitow do zdalnego repo
+
+git commit --allow-empty -m"ping remote" (ta flaga pozwala na commitowanie bez zmian)
+
+git status -> pokaze ile commitow jestesmy do przodu
+
+--
+git push
+! [remote rejected] master -> master (branch is currently checked out)
+error: failed to push some refs to 'G:/GitKurs/clonedRepo/../GitRepo1/'
+ Da da daaaammmm
+
+BARE repo -> go³e repo bez working copy -> severowe sluzy do iterakcji miedzy repozytoriami
+
+git init --bare
+best practice -> nazwy katalogow z barerepo koñcz¹ siê na .git -> patrz github :-)
+
+--
+ustawianie zdalnego repo:
+git remote -> show remotes
+git remote add origin ../server_repo.git -> set remote repo path
+git remote show origin
+
+usuwamy remote repo ->
+git remote remove origin<-nazwa
+
+--
+mo¿na wymieniaæ siê kodem bez bare repo
+peer-to-peer
+
+--
+upstream branch
+
+bare repo -> nie ma samo w sobie ga³êzi!(w sumie nic nie ma)
+wiec trzeba by zrobic push ale najpierw:
+upstream branch:
+Odpowiednik lokalnej galezi w zdalnym repozytorium
+Git sledzi zmiany w jednej i drugiej, wskazujac zmiany miedzy nimi.
+Operacje push/pull domyslnie wiedza, ktorej zdalnej galezi domyslnie uzyc.
+
+nazwy branchy moga byæ ró¿ne!!!
+
+git push origin master -u
+push -> wypchnij zmiany do zdalnego repo
+origin -> wypchnij do repo o nazwie origin
+master -> wypchnij nasza lokalna galaz master
+-u -> dokonaj mapowania naszej lokalnej galezi  
+
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+kiedy chcemy zmieniæ nazwe galezi w zdalnym repo:
+
+$ git push origin exp_branch:remoteBranchName
+ : -> oddziela nazwe lokalna od zdalnej
+git branch -a -> all -> uzyte w lokalnym repo, pokazuje równie¿ branche mapowane w zdalnym.
+
+mozemy to wykorzystaæ tak aby w zdalnym repo byly tylko nazwy taskow, albo przestrzegaly ustalonej konwencji
+a u siebe robimy jak chcemy.
+
+--
+kasowanie remote brancha:
+git push origin :remoteBranchName / push <nothing> to rmoteBranchName
+albo
+git push origin --delete remoteBranchName
+
+--
+Backup
+przy pushowania git push origin branch,
+pchamy tylko i wylacznie jedna galaz i to bez tagów!!!
+mozemy mieæ 2 remoty
+
+dodajemy 2gie repo git remote add backup ../backup.git
+pchamy komenda git push --mirror backUpRepoName (zamiast origin)
+kopiuje cala zawartosc tagi
+
+ale jest to indywidualny "backup"
+
+--
+simple pushing mode
+push.default
+
+zmiana nazwy remota:
+git remote rename oldName newName 
+
+zmienia nazwe lokalnie!
+
+--
+Pobieranie zmian!
+
+Fetch -> sciaga zmiany do tracking branch, ale nie integruje ich z kodem
+tracking branch reprezentuje zdalna galaz.
+
+git pull = fetch + merge
+
+=> generuje konflikty
+
+najlepiej najpierw œci¹gaæ potem mergowac
+
+--
+jak wyslac tag!
+git push origin <tag name>
+git push --tags -> wyslij zmiany z tagami
+
+nie jest to rekomendowany sposob wykonania tagow
+
+rozwiazanie - annotated tags
+git push --follow-tags -> wysy³a tylko annotated
+automatyzacja : git config push.followTags true
+teraz wszystkie pushe wysy³aj¹ tagi annotated
+
+kasowanie tagow:
+lokalnie git tag -d tagname
+zdalnie: tak samo jak kasowanie galezi
+git push origin :tagname
+
+WAZNE usuwanie tagow ktore zostaly usuniete ze zdalnego repo:
+git fetch --prune --prune-tags
+
+aby sciagnac z remote bez tagow:
+git fetch --no-tags
+

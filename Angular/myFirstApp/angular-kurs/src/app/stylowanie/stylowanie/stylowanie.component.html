@@ -1,0 +1,24 @@
+<span>[ngStyle]</span>
+<p [ngStyle]="{color: 'blue'}">uzycie dyrektywy ngStyle</p>
+<p [ngStyle]="{color: getColor()}">uzycie metody i dyrektywy ngStyle</p>
+
+<input [(ngModel)]="textField">
+<button (click)="taskList.push(textField)"> add task</button>
+<button (click)="taskList.pop()"> remove task</button>
+
+<div *ngFor="let t of taskList">
+  {{t}}
+</div>
+
+<span> [ngClass] </span>
+
+<input [(ngModel)]="textField2">
+<!-- adding bootstrap content -->
+<button type="button" class="btn btn-success" (click)="taskList2.push(textField2)"> add task</button>
+<button type="button" class="btn btn-danger" (click)="taskList2.pop()"> remove task</button>
+
+<div *ngFor="let t of taskList2;
+let odd = odd" [ngClass]="{'odd-class': odd === true,
+  'last': taskList2.length===1}">
+  {{t}}
+</div>

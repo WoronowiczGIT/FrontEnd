@@ -355,7 +355,7 @@ import z "angular core"!!, sluzy do wysylania eventu w górę, występuje razem 
 
 --
 #nazwa w selektorze albo w elemencie html daje nam dostep
-poprzez alias przy uzyciu dekoratora @ViewChild('nazwa')
+poprzez alias przy uzyciu dekoratora @ViewChild('nazwa',{static: false}) <- flaga jest konieczna
 po okresleniu jakiego typu jest to element mozemy go uzywac
 
 --
@@ -394,3 +394,96 @@ implements OnDestroy
 ngOnDestroy
 wywolywana kiedy komponent jest niszczony
 mozemy wykonac np operacje zapisu do BD etc
+
+--
+stylowanie
+[ngStyle]="{singleCssProperty: property}"
+[ngStyle]="{cssProperty: componentFunction()}"
+
+[ngClass="class name"]
+
+[ngClass="{'odd-class': odd === true}"
+ albo
+[ngClass="{'odd-class': odd}"
+
+[ngClass]="{'odd-class': odd === true,
+  'last': taskList2.length===1}">
+
+każdy styl jest odpowiedni tylko dla danego komponentu, ale mozemy go exportować;
+
+w komponencie
+@Component({
+    encapsulation: ViewEncapsulation.none;
+    encapsulation: ViewEncapsulation.Emulated;
+})
+none -> style zaczynaja dzialac globalnie
+emulated -> w ramach komponentu
+
+--
+bootstrap
+- easy way -> dodac do package.json
+<dane ze strony> 
+- hard way -> npm inestall bootstrap@4.0.0beta
+
+w angular.json -> styles: "style.css", " "../node_modules/bootstrap/dist/css/bootstrap.min.css""
+
+killing app = in right terminal use ctril + c
+
+--
+Servisy
+
+komendy:
+ ng generate service name
+ ng g s name
+
+ serwis jest zwykla klasa ktora posiada dekorator @Injectable
+
+ możemy tworzyć instancje serwisu jak każdej innej klasy ale lepiej uzyć dependency injection. dzieki temu servisy moga być dostepne globalnie. 
+ możemy mieć jedną albo wiele instancji danego servisu;
+
+ servisy deklarujemy w konstruktorze(!):
+
+ constructor(private myService: ClickService) { }
+ a potem rejestrujemy:
+ @Component -> providers: [ClickService]
+
+tworzymy wtedy osobną instancje servisu dla każdego komponentu
+
+aby mieć jedną i tylko jedną instancję kasujemy pole "providers" w komponencie i umieszczamy je w "app-root".
+wtedy servis jest dzielony pomiedzy wszystkie komponenty;
+albo
+dodajemy providersa w @nGModule ! -> wtedy servis jest dzielony przez wszystki moduły!
+
+Angular v6+ nowy sposob rejestrowania servisow:
+
+@Injectable({
+  providedIn: 'root'
+})
+--
+rxjs biblioteka obserwatorów:
+
+servis -> 
+import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Subject';
+
+private sum = new Subject<number>();
+
+-> tu subject informuje wszystkich o zmianie
+method(){
+this.sum.next(this.sumClicks);
+}
+-> zwraca subject sum jako Observable
+getSum(): Observable<number>{
+  return this.sum.asObservable();
+}
+-> subskrybujemy obserwowalny obiekt i bindujemy z polem
+this.cService.getSum().subscribe(value => {
+      this.allClicks = value;
+    })
+
+@Injectable jest oznaczeniem umozliwiajacym wstrzykiwanie DO tej klasy a nie na odwrót.
+@Comploment posiada rozszerzona funkcjonalnosc @Injectable
+
+Servisy z AppModule mogą być nadpisywane poprzez dodanie servisu do providerow w komponencie
+wtedy wszystkie dzieci uzywaja instancji nadpisanej
+jak kaskadowosc w css albo dziedziczenie.

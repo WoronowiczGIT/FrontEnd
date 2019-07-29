@@ -1,0 +1,14 @@
+.odd-class {
+  font-size: 32px;
+  color: rgb(119, 25, 41);
+}
+
+.last {
+  background-color: black;
+}
+
+.btn {
+  font-size: 16px;
+  padding: 5px;
+  margin: 10px;
+}

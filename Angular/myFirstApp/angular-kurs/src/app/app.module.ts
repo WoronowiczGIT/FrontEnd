@@ -22,6 +22,11 @@ import { TDLAddTaskComponent } from './tdl-add-task/tdl-add-task.component';
 import { TDLv2Component } from './tdlv2/tdlv2.component';
 import { TdlTodoComponent } from './tdlv2/tdl-todo/tdl-todo.component';
 import { TdlDoneComponent } from './tdlv2/tdl-done/tdl-done.component';
+import { StylowanieComponent } from './stylowanie/stylowanie/stylowanie.component';
+import { KlikaczComponent } from './serviceDemo/klikacz/klikacz.component';
+import { Klikacz1Component } from './serviceDemo/klikacz/klikacz1/klikacz1.component';
+import { Klikacz2Component } from './serviceDemo/klikacz/klikacz2/klikacz2.component';
+import { LogService } from './serviceDemo/services/log.service';
 
 
 @NgModule({
@@ -43,6 +48,10 @@ import { TdlDoneComponent } from './tdlv2/tdl-done/tdl-done.component';
     TDLv2Component,
     TdlTodoComponent,
     TdlDoneComponent,
+    StylowanieComponent,
+    KlikaczComponent,
+    Klikacz1Component,
+    Klikacz2Component,
 
   ],
   imports: [
@@ -50,7 +59,7 @@ import { TdlDoneComponent } from './tdlv2/tdl-done/tdl-done.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

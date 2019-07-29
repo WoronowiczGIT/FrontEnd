@@ -8,6 +8,11 @@ html {
   font-size: 32px;
 }
 
+h1,
+p {
+  font-size: 20px;
+}
+
 * {
   font-size: 20px;
 }
@@ -40,4 +45,8 @@ span {
 
 .tab {
   background-color: bisque;
+}
+
+button {
+  font-size: 16px;
 }
