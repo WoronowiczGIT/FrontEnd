@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100%;
+    background-image: url("../graphics/dogimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    font-family: 'Shadows Into Light', cursive;
+    text-align: center;
+    line-height: 20px;
+
+}
+article{
+    display: flex;
+    
+}
+header{
+    display: flex;
+    max-width: 900px;
+    justify-content: space-evenly;
+}
+
+#identyfikator{
+    padding: 30px;
+    font-size: 50px;
+}
+.wrapper{
+    border: 25px solid red;
+    margin: 30px;
+}
+#myarticel{
+    font-size: 5px;
+}
+
+html{
+    height: 100%;
+}
+nav a:hover{
+color: red;
+font-size: 200%;
+
+}
+a:last-child:hover{
+    color: chartreuse;
+    font-size: 400%;
+}
+body a:last-child::first-letter{
+    color: black;
+    font-size: 200%;
+}

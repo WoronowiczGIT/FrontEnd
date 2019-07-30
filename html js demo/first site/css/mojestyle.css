@@ -1,0 +1,29 @@
+
+
+
+body{
+    background-color: aquamarine;
+}
+
+body{
+    font-size: 24px;
+}
+
+.wrapper{
+    color:blue;
+}
+#identyfikator{
+    font-size: 50px;
+}
+.page-navigation{
+    font-size: 40px;
+}
+
+div > article{
+    font-stretch: expanded;
+    font-size: 32px;
+}
+
+.myarticel{
+    background-color: bisque;
+}
